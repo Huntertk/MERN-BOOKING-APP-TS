@@ -38,7 +38,9 @@ router.post('/register', [
             maxAge:86400000
         })
 
-        return res.sendStatus(201);
+        return res.status(201).json({
+            message:"User Registed Successfully"
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({messgae:"Internal Server Error"})
