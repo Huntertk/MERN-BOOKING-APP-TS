@@ -50,7 +50,14 @@ router.post("/login", [
 
 })
 
-
+router.post("/logout", async(req:Request, res:Response) => {
+    res.cookie('auth_token', "", {
+        expires:new Date(Date.now())
+    })
+    res.status(200).json({
+        message:"User Logout Success"
+    })
+})
 
 router.get('/validate-token', verifyToken, async (req:Request, res:Response) => {
     res.status(200).json({userId: req.userId})
