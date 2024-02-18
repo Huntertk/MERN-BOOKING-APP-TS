@@ -9,7 +9,7 @@ import path from 'path';
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string);
 
-
+const PORT = process.env.PORT || 4000
 const app = express(); 
 app.use(cookieParser());
 app.use(express.json());
@@ -24,7 +24,7 @@ app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
 app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is running on port 3000");
     
 })
