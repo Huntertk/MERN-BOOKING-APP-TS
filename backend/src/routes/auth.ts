@@ -1,8 +1,9 @@
-import express, {Request, Response}  from "express";
+import express, { Request, Response}  from "express";
 import { check, validationResult } from "express-validator";
 import User from "../models/user";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import verifyToken from "../middleware/auth";
 
 
 const router  =express.Router();
@@ -47,6 +48,12 @@ router.post("/login", [
         res.status(500).json({messgae:"Internal Server"})
     }
 
+})
+
+
+
+router.get('/validate-token', verifyToken, async (req:Request, res:Response) => {
+    res.status(200).json({userId: req.userId})
 })
 
 export default router;
