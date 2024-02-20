@@ -5,6 +5,7 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 import userRoutes from './routes/users'; 
 import authRoutes from './routes/auth'; 
+import myHotelRoutes from './routes/my-hotels'; 
 import path from 'path';
 import {v2 as cloudinary} from 'cloudinary'
 
@@ -30,6 +31,8 @@ app.use(cors({
 
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
+app.use("/api/my-hotesl", myHotelRoutes)
+
 app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 
 app.listen(PORT, () => {
