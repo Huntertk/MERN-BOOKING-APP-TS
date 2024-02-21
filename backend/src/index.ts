@@ -31,7 +31,7 @@ app.use(cors({
 
 app.use("/api/users", userRoutes)
 app.use("/api/auth", authRoutes)
-app.use("/api/my-hotesl", myHotelRoutes)
+app.use("/api/my-hotels", myHotelRoutes)
 
 app.use(express.static(path.join(__dirname, "../../frontend/dist")))
 

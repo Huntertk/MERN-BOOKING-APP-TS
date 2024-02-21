@@ -31,12 +31,6 @@ router.post(
     ],
     upload.array("imageFiles", 6),
     async(req:Request, res: Response) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-           return res.status(400).json({
-                messgae: errors.array()
-            })
-        }
     try {
         const imageFiles = req.files as Express.Multer.File[];
         const newHotel: HotelType = req.body;
