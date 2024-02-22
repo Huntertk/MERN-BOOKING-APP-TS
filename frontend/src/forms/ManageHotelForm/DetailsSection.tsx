@@ -34,7 +34,7 @@ const DetailsSection = () => {
             <input 
                 type="text"
                 className="border rounded w-full py-1 px-2 font-medium "
-                {...register("city", {required:"This feild is required"})}
+                {...register("country", {required:"This feild is required"})}
             />
             {errors.country && (
                 <span className="text-red-500">{errors.country.message}</span>
