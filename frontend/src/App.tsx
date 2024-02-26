@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn"
 import AddHotel from "./pages/AddHotel"
 import { useAppContext } from "./contexts/AppContext"
 import MyHotels from "./pages/MyHotels"
+import Search from "./pages/Search"
 
 const App = () => {
 
@@ -47,6 +48,12 @@ const App = () => {
               <Route path="/my-hotels" element={
                <Layout>
                 <MyHotels />
+              </Layout>
+              } />
+
+              <Route path="/search" element={
+               <Layout>
+                <Search />
               </Layout>
               } />
             </>

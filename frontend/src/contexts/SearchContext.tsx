@@ -7,7 +7,7 @@ type SearchContext = {
     adultCount:number;
     childCount:number;
     hotelId:string;
-    saveSearchValues: (destination:string, checkIn:Date,  checkOut:Date,  adultCount:number, childCount:number, hotelId:string) => void
+    saveSearchValues: (destination:string, checkIn:Date,  checkOut:Date,  adultCount:number, childCount:number, hotelId?:string) => void
 }
 
 const SearchContext = createContext<SearchContext | undefined>(undefined);
@@ -54,5 +54,5 @@ export const SearchContextProvider = ({children}: SearchContextProviderProps) =>
 
 export const useSearchContext = () => {
     const context = useContext(SearchContext);
-    return context as SearchContext
-}
+    return context as SearchContext;
+  };
