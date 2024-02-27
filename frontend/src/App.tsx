@@ -19,12 +19,6 @@ const App = () => {
             </Layout>
         } />
 
-        <Route path="/search" element={
-          <Layout>
-            <h1>Search</h1>
-            </Layout>
-        } />
-
         <Route path="/register" element={
           <Layout>
            <Register />
