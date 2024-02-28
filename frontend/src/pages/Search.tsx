@@ -2,6 +2,8 @@ import { useQuery } from "react-query";
 import * as apiClient from '../api-client'
 import { useSearchContext } from "../contexts/SearchContext";
 import { useState } from "react";
+import SearchResultCard from "../components/SearchResultCard";
+import Pagination from "../components/Pagination";
 
 
 const Search = () => {
@@ -22,7 +24,35 @@ const Search = () => {
     const {data:hotelData} = useQuery(["searchHotels", searchParams], () => apiClient.searchHotel(searchParams))
     
   return (
-    <div>Search</div>
+    <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
+      <div className="rounded-lg border border-slate-300 p-5 h-fit sticky top-10">
+        <div className="space-y-5">
+          <h3 className="text-lg font-semibold border-b border-slate-300 pb-5 ">Filters By</h3>
+          {/* TODO FILTERS */}
+        </div>
+
+      </div>
+      <div className="flex flex-col gap-5 ">
+        <div className="flex justify-between items-center">
+          <span className="text-xl font-bold">
+            {hotelData?.pagination.total} Hotels Found
+            {search.destination ? ` in ${search.destination}` : ``}
+            </span>
+            {/* TODOS SORT OPTIONS */}
+        </div>
+        {hotelData?.data.map((hotel, i) => (
+          <SearchResultCard key={i} hotel={hotel}  />
+        ))}
+
+        <div className="">
+          <Pagination 
+          page={hotelData?.pagination.page || 1} 
+          pages={hotelData?.pagination.pages || 1} 
+          onPageChange={(page) => setPage(page)}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
