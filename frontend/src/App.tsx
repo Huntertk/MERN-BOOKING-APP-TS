@@ -7,10 +7,14 @@ const App = () => {
       <Routes>
         <Route path="/" element={
           <Layout>
-            
+            <h1>Home Page</h1>
           </Layout>
         } />
-        <Route path="/search" element={<h1>Search Page</h1>} />
+        <Route path="/search" element={
+          <Layout>
+            <h1>Search Page</h1>
+          </Layout>
+        } />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
