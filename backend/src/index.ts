@@ -3,6 +3,8 @@ import cors from 'cors';
 import 'dotenv/config';
 import mongoose from 'mongoose';
 
+import userRoutes from './routes/users'
+
 //Express App Initialization
 const app = express();
 
@@ -18,9 +20,7 @@ app.use(cors());
 
 
 //Routes
-app.get('/api/test', async (req:Request, res:Response) => {
-    res.status(200).json({message:"Api is working"})
-})
+app.use('/api/users', userRoutes)
 
 //Server 
 app.listen(3000, () => {
