@@ -1,11 +1,15 @@
 import express, {Request, Response} from 'express';
 import cors from 'cors';
 import 'dotenv/config';
+import mongoose from 'mongoose';
 
 //Express App Initialization
 const app = express();
 
-
+//Db connection
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string )
+    .then(() => console.log("DB is Connected"))
+    .catch((err) => console.log(err))
 
 //Middlwares
 app.use(express.json())
