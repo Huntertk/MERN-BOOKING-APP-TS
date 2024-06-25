@@ -4,6 +4,7 @@ import 'dotenv/config';
 import mongoose from 'mongoose';
 
 import userRoutes from './routes/users'
+import authRoutes from './routes/auth'
 
 //Express App Initialization
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors());
 
 
 //Routes
+app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 
 //Server 
