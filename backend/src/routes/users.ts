@@ -1,17 +1,32 @@
 import express, {Request, Response} from 'express';
 import User from '../models/user';
 import jwt from 'jsonwebtoken';
-import {check, validationResult} from 'express-validator'
+import {body, validationResult} from 'express-validator'
 
 const router = express.Router();
 
 // /api/users/register
 router.post('/register', [
-    check('firstName', 'first name is required').isString(),
-    check('lastName', 'last name is required').isString(),
-    check('email', 'email is required').isEmail(),
-    check('password', 'passowrd is required with 8 or more character').isLength({min:6}),
-
+    body('firstName')
+    .notEmpty()
+    .withMessage('firstName is required')
+    .isString()
+    .withMessage('please provide firstname as string'),
+    body('lastName')
+    .notEmpty()
+    .withMessage('lastName is required')
+    .isString()
+    .withMessage('please provide lastname as string'),
+    body('email')
+    .notEmpty()
+    .withMessage('lastName is required')
+    .isEmail()
+    .withMessage('please provide valid email'),
+    body('password')
+    .notEmpty()
+    .withMessage('password is required')
+    .isLength({min:6})
+    .withMessage('passowrd is required with 8 or more character'),
 ] , async (req:Request, res:Response) => {
     const errors = validationResult(req);
     
