@@ -48,8 +48,10 @@ router.post('/register', [
             httpOnly:true,
             secure: process.env.NODE_ENV === 'production',
             maxAge: 1000*60*60*24*1
-        })
-        return res.sendStatus(200)
+        });
+        
+        res.status(200).json({message:"User Registered Successfully"});
+
     } catch (error) {
         console.log(error);
         res.status(500).json({message:"Internal Server Error"});
