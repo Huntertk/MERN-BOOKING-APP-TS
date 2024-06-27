@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom"
 import { useAppContext } from "../context/AppContext";
+import SignOutButton from "./SignOutButton";
 
 const Header = () => {
-    const {isLoggedIn} = useAppContext()
+    const {isLoggedIn} = useAppContext();
+
 
   return (
     <div className="bg-blue-800 py-6">
@@ -16,7 +18,7 @@ const Header = () => {
                         <>
                             <Link to="/my-bookings">My Bookings</Link>
                             <Link to="/my-hotels">My Hotels</Link>
-                            <button>Sign Out</button>
+                            <SignOutButton/>
                         </>
                     ) : (
                         <Link 

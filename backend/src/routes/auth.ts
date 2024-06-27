@@ -60,4 +60,15 @@ router.get('/validate-token', verifyToken, (req:Request, res:Response) => {
     }
 })
 
+router.post('/logout', (req:Request, res:Response) => {
+    try {
+        res.status(200).cookie('auth_token', "", {
+            expires:new Date(0),
+        }).json({message:"user sign out successful"})
+    } catch (error) {
+        res.status(500).json({message:"Internal Server Error"})
+    }
+})
+
+
 export default router;
