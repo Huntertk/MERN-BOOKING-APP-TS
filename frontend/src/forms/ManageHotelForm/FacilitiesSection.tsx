@@ -11,6 +11,7 @@ const FacilitiesSection = () => {
                 {
                     hotelFacilities.map((facility) => (
                         <label 
+                        key={facility}
                             className='text-sm flex gap-1 text-gray-700'
                         >
                             <input 

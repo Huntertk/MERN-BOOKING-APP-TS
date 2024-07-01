@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import multer from 'multer';
 import cloudinary from 'cloudinary';
 import Hotel, { HotelType } from '../models/hotel';
@@ -46,10 +46,7 @@ router.post('/',
     ],
     upload.array("imageFiles", 6), 
     async (req:Request, res:Response) => {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.status(400).json({message:errors.array()})
-        }
+      
         try {
             const imageFiles = req.files as Express.Multer.File[];
             const newHotel:HotelType = req.body;
