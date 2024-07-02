@@ -3,7 +3,7 @@ import multer from 'multer';
 import cloudinary from 'cloudinary';
 import Hotel, { HotelType } from '../models/hotel';
 import { verifyToken } from '../middleware/auth';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 
 
 const router = express.Router();
@@ -77,5 +77,16 @@ router.post('/',
             res.status(500).json({messgae:"Internal Server Error"})
         }
 })
+
+router.get('/', verifyToken, async(req:Request, res:Response) => {
+    try {
+        const hotels = await Hotel.find({userId: req.userId});
+        res.status(200).json(hotels)
+    } catch (error) {
+        console.log(error);
+            res.status(500).json({messgae:"Internal Server Error"})
+    }
+})
+
 
 export default router;
